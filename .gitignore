@@ -152,6 +152,15 @@ $RECYCLE.BIN/
 *.msix
 *.msm
 *.msp
+*.mp4
+*.docx
+*.pdf
+*.mov
+*.odt
+*.odt#
+*LibreOffice*
+*.zip
+*.pdf
 
 # Windows shortcuts
 *.lnk
