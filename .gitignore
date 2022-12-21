@@ -142,6 +142,7 @@ ehthumbs_vista.db
 [Dd]esktop.ini
 config.py
 config_test.py
+dbconfig.py
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
