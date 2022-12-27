@@ -1,30 +1,39 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, render_template
 
-from functions_V01 import sqlconnectors
+from functions_V01 import urlCheck
 import datetime
 
-app = Flask(__name__, static_url_path='', static_folder='static')
+app = Flask(__name__, static_url_path='', static_folder='templates')
 
-
+# https://stackoverflow.com/questions/23327293/flask-raises-templatenotfound-error-even-though-template-file-exists
 @app.route('/')
 def index():
-    return "Hello, World!"
+    return render_template('index.html')
 
+# @app.route("/about/")
+# def about():
+#     return render_template('about.html')
 
+# get All
+# curl http://127.0.0.1:5000/
 @app.route('/main')
 def getAll():
-    print("in getall")
-    return "get all"
+    # print("in getall")
+    # return "get all"
+    results = urlCheck.getAll()
+    return jsonify(results)
 
-
+# Find by ID
+# curl http://127.0.0.1:5000/1
 @app.route('/main/<int:id>')
 def findById(id):
     print("findById")
     return "findById"
 
-
-@app.route('/main', methods=['POST'])
-def create():
+# Create
+# curl  -i -H "Content-Type:application/json" -X POST -d "{\"url\":\"www.google.com\", \"type\":\"word\"}" http://127.0.0.1:5000/
+@app.route('/', methods=['POST'])
+def create_link():
     x = datetime.datetime.now()
     str_now = x.strftime('%Y-%m-%d %H:%M:%S')
     if not request.json:
@@ -32,23 +41,26 @@ def create():
     # other checking 
     uri = {
         "url": request.json['url'], 
-        "entrytime": str_now,
+        "type": request.json['type'], 
+        "datetime": str_now,
     }
-    values =(uri['url'],uri['entrytime'])
-    newId = sqlconnectors.create(values)
+    values =(uri['url'],uri['type'],uri['datetime'])
+    newId = urlCheck.create(values)
     uri['id'] = newId
     return jsonify(uri)
 
-
-@app.route('/main/<int:id>', methods=['PUT'])
+# Update
+# curl -X PUT http://127.0.0.1:5000/1
+@app.route('/<int:id>', methods=['PUT'])
 def update(id):
-    print("update")
-    return "update"
+    print("Update")
+    return "Return Id number" + str(id)
 
-
-@app.route('/main/<int:id>' , methods=['DELETE'])
+# Delete
+# curl -X DELETE http://127.0.0.1:5000/1
+@app.route('/<int:id>' , methods=['DELETE'])
 def delete(id):
-    print("update")
+    print("Delete")
     return jsonify({"done":True})
 
 
