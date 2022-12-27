@@ -2,43 +2,59 @@
 2022_09_Data_Representation
 
 
-
 ## SQL dbconfig.py file
 
     mysql = {
         'host':"",
         'user':"",
         'password':"",
-        'database':"urlcheck"
+        'database':"datareprentation"
     }
 
-## SQL Creation
+## SQL Database 
 
-    create database urlcheck;
-    Query OK, 1 row affected (0.00 sec)
+    CREATE DATABASE datareprentation;
 
-    create table urlcheck (
-    id int NOT NULL AUTO_INCREMENT,
-    url varchar(2048),
-    entrytime datetime,
-    PRIMARY KEY(id)
-    );
+## SQL Creation table
+To create a table in MySQL with an id column that is an auto-incrementing primary key and three additional columns, url, type, and score, you can use the following SQL statement:
 
     CREATE TABLE links (
     id INT AUTO_INCREMENT PRIMARY KEY,
     url VARCHAR(2048),
     type VARCHAR(250),
     datetime DATETIME
-);
+    );
 
-## SQL insert
+This will create a table called links with four columns:
 
-    insert into urlcheck (url,entrytime) values ('www.google.com', '2022-12-22 13:23:44');
+- id: an integer column that is set as the primary key and has the AUTO_INCREMENT attribute, which means that the value of this column will be automatically incremented whenever a new row is inserted into the table.
+- url: a string column with a maximum length of 2048 characters.
+- type: a string column with a maximum length of 250 characters.
+- score: an integer column.
+
+## SQL insert values
+
+    INSERT INTO links (url, type, score) VALUES 
+    ('http://example.com', 'pdf', 10),
+    ('http://example.org', 'word', 20),
+    ('http://example.net', 'excel', 30);
 
 
 ## CURL Tested
 
+**Get all**
+- curl "http://127.0.0.1:5000/urls"
 
-**Create in SQL**
+**Find by ID**
+- curl "http://127.0.0.1:5000/urls/22"
 
-    curl  -i -H "Content-Type:application/json" -X POST -d "{\"url\":\"www.google.com\"}" http://127.0.0.1:5000/main
+**Create new entry**
+- curl -i -H "Content-Type:application/json" -X POST -d "{\"URL\":\"www.askjeves.com\",\"Type\":\"someone\",\"Score\":50}" http://127.0.0.1:5000/urls
+
+**Update**
+- curl -i -H "Content-Type:application/json" -X PUT -d "{\"URL\":\"www.askjeves.com\",\"Type\":\"PDF\",\"Score\":100}" http://127.0.0.1:5000/urls/23
+
+**Delete**
+- curl -X DELETE "http://127.0.0.1:5000/urls/18"
+
+

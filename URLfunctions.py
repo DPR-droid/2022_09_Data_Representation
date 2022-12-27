@@ -1,8 +1,8 @@
 import mysql.connector
 import dbconfig as cfg
 
-class urlCheck:
 
+class URLfunctions:
     connection=""
     cursor =''
     host=       ''
@@ -29,21 +29,20 @@ class urlCheck:
     def closeAll(self):
         self.connection.close()
         self.cursor.close()
-
-
+         
     def create(self, values):
         cursor = self.getcursor()
-        sql="insert into links (url,type,datetime) values (%s,%s,%s)"
+        sql="insert into links (URL,Type, Score) values (%s,%s,%s)"
         cursor.execute(sql, values)
+
         self.connection.commit()
         newid = cursor.lastrowid
         self.closeAll()
         return newid
 
-
     def getAll(self):
         cursor = self.getcursor()
-        sql="select * from urlcheck"
+        sql="select * from links"
         cursor.execute(sql)
         results = cursor.fetchall()
         returnArray = []
@@ -55,8 +54,38 @@ class urlCheck:
         self.closeAll()
         return returnArray
 
+    def findByID(self, id):
+        cursor = self.getcursor()
+        sql="select * from links where id = %s"
+        values = (id,)
+
+        cursor.execute(sql, values)
+        result = cursor.fetchone()
+        returnvalue = self.convertToDictionary(result)
+        self.closeAll()
+        return returnvalue
+
+    def update(self, values):
+        cursor = self.getcursor()
+        sql="update links set URL= %s,Type=%s, Score=%s  where id = %s"
+        cursor.execute(sql, values)
+        self.connection.commit()
+        self.closeAll()
+        
+    def delete(self, id):
+        cursor = self.getcursor()
+        sql="delete from links where id = %s"
+        values = (id,)
+
+        cursor.execute(sql, values)
+
+        self.connection.commit()
+        self.closeAll()
+        
+        print("delete done")
+
     def convertToDictionary(self, result):
-        colnames=['id','url','type', "datetime"]
+        colnames=['id','URL','Type', "Score"]
         item = {}
         
         if result:
@@ -65,5 +94,5 @@ class urlCheck:
                 item[colName] = value
         
         return item
-
-urlCheck = urlCheck()
+        
+URLfunctions = URLfunctions()
