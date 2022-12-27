@@ -117,6 +117,14 @@
         showViewAll();
     }
 
+    function doCheck(r){
+        var tableElement = document.getElementById('urlTable');
+        var rowElement = r.parentNode.parentNode;
+        var index = rowElement.rowIndex;
+        checkURLAjax(rowElement.getAttribute("id"));
+        tableElement.checkRow(index);
+    }
+
     function doDelete(r){
         var tableElement = document.getElementById('urlTable');
         var rowElement = r.parentNode.parentNode;
@@ -142,7 +150,7 @@
         var cell6 = rowElement.insertCell(5);
         cell6.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
         var cell7 = rowElement.insertCell(6);
-        cell7.innerHTML = '<button onclick=doDelete(this)>Check</button>'
+        cell7.innerHTML = '<button onclick=doCheck(this)>Check</button>'
 
     }
 
@@ -193,6 +201,8 @@
 
     function getAllAjax(){
         $.ajax({
+          // pythonanywhere.com  
+          // "url": "/urls",
             "url": "http://127.0.0.1:5000/urls",
             "method":"GET",
             "data":"",
@@ -215,6 +225,8 @@
     function createURLAjax(url){
         console.log(JSON.stringify(url));
         $.ajax({
+          // pythonanywhere.com  
+          // "url": "/urls",
             "url": "http://127.0.0.1:5000/urls",
             "method":"POST",
             "data":JSON.stringify(url),
@@ -237,6 +249,8 @@
     function updateURLAjax(url){
         console.log(JSON.stringify(url));
         $.ajax({
+          // pythonanywhere.com  
+          // "url": "/urls/"+encodeURI(url.id),
             "url": "http://127.0.0.1:5000/urls/"+encodeURI(url.id),
             "method":"PUT",
             "data":JSON.stringify(url),
@@ -251,9 +265,30 @@
             }
         });
     }
+
+    function checkURLAjax(id){
+        $.ajax({
+          // pythonanywhere.com  
+          // "url": "/urls/"+encodeURI(id),
+            "url": "http://127.0.0.1:5000/urls/"+encodeURI(id),
+            "method":"GET",
+            "data":"",
+            "dataType": "JSON",
+            contentType: "application/json; charset=utf-8",
+            "success":function(result){
+                //console.log(result);
+                  
+            },
+            "error":function(xhr,status,error){
+                console.log("error: "+status+" msg:"+error);
+            }
+        });
+    }
     
     function deleteURLAjax(id){
         $.ajax({
+          // pythonanywhere.com  
+          // "url": "/urls/"+encodeURI(id),
             "url": "http://127.0.0.1:5000/urls/"+encodeURI(id),
             "method":"DELETE",
             "data":"",

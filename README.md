@@ -22,7 +22,7 @@ To create a table in MySQL with an id column that is an auto-incrementing primar
     id INT AUTO_INCREMENT PRIMARY KEY,
     url VARCHAR(2048),
     type VARCHAR(250),
-    datetime DATETIME
+    score INT
     );
 
 This will create a table called links with four columns:
@@ -57,4 +57,9 @@ This will create a table called links with four columns:
 **Delete**
 - curl -X DELETE "http://127.0.0.1:5000/urls/18"
 
+
+
+## www.pythonanywhere.com
+
+http://daveg00398318.pythonanywhere.com/
 
