@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> View URLs</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- https://stackoverflow.com/questions/22259847/application-not-picking-up-css-file-flask-python -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+      </head>
+
+
+      <div class="container">
+        <!--Heading 1 for the sections styled with CSS in class "text-center" -->
+        <h1 class="container">URL Status</h1>
+        <div class="wrapper">
+            <p>
+                <a href="/" class="linktext">URL DB</a> 
+                <!-- <a href="dashboard2.html" class="linktext">PieChart</a>  
+                <a href="uploader.html" margin-left: 10px;>Uploader</a>  -->
+                <a href="logout.html" class="linktext">LogOut</a> 
+            </p>
+        </div>
+      </div>

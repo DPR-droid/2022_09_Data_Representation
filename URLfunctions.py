@@ -95,45 +95,49 @@ class URLfunctions:
         result = response.json()
         count = 0
         susurl = []
-        # print(result)
-        if result['response_code'] == 0:
-            print('Resource does not exist in the dataset')
-            exit()
-        elif result['positives'] != 0:
-            for key, value in result['scans'].items():
-                if value['result'] == "unrated site":
-                    count = count + 1
-                elif value['result'] != "clean site":
-                    susurl.append(str(key)) 
-        else:
-            print('Maybe an error with the code')
+        try: 
+            if result['response_code'] == 0:
+                print('Resource does not exist in the dataset')
+                return str("response_code")
+            elif result['positives'] != 0:
+                for key, value in result['scans'].items():
+                    if value['result'] == "unrated site":
+                        count = count + 1
+                    elif value['result'] != "clean site":
+                        susurl.append(str(key)) 
+            else:
+                print('Maybe an error with the code')
+                return str("Clear with error")
+            
+
+            vtScan = result['scan_date']
+            TSC = result['total']
+            USC = count
+            SSCount = len(susurl)
+            finallist = str(susurl)
+
+
+            x = datetime.datetime.now()
+            str_now = x.strftime('%Y-%m-%d %H:%M:%S')
+
+            # print(len(susurl))
+            # print(finallist)
+
+            values = (id, vtScan ,TSC, USC, SSCount, finallist, str_now)
+
+            sql="INSERT INTO url_checked (cid, VT_First_scan_date, Total_sites_checked, Unrated_site_count, suspicious_site, site_list, Date_checked) values (%s,%s,%s,%s,%s,%s,%s)"
+            
+            # print(sql, values)
+            
+            cursor.execute(sql, values)
+            
+            self.connection.commit()
+            self.closeAll()
+
+            return finallist
         
-
-        vtScan = result['scan_date']
-        TSC = result['total']
-        USC = count
-        SSCount = len(susurl)
-        finallist = str(susurl)
-
-
-        x = datetime.datetime.now()
-        str_now = x.strftime('%Y-%m-%d %H:%M:%S')
-
-        # print(len(susurl))
-        # print(finallist)
-
-        values = (id, vtScan ,TSC, USC, SSCount, finallist, str_now)
-
-        sql="INSERT INTO url_checked (cid, VT_First_scan_date, Total_sites_checked, Unrated_site_count, suspicious_site, site_list, Date_checked) values (%s,%s,%s,%s,%s,%s,%s)"
-        
-        # print(sql, values)
-        
-        cursor.execute(sql, values)
-        
-        self.connection.commit()
-        self.closeAll()
-
-        return finallist
+        except:
+            return str("Clear Exception")
 
 
     def delete(self, id):

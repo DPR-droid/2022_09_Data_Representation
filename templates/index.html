@@ -5,10 +5,28 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    </head>
+
+        <!-- https://stackoverflow.com/questions/22259847/application-not-picking-up-css-file-flask-python -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+      </head>
+
+
+    <div class="container">
+      <!--Heading 1 for the sections styled with CSS in class "text-center" -->
+      <h1 class="container">URL DB</h1>
+      <div class="wrapper">
+          <p>
+              <a href="check.html" class="linktext">URL Status</a> 
+              <!-- <a href="dashboard2.html" class="linktext">PieChart</a>  
+              <a href="uploader.html" margin-left: 10px;>Uploader</a>  -->
+              <a href="/" class="linktext">LogOut</a> 
+          </p>
+      </div>
+    </div>
+
+
     <body>
-        <h1>URL Checker</h1>
-        <div> <button id="showCreateButton" onclick="showCreate()">Create</button></div>
+        <div> <button class="button" id="showCreateButton" onclick="showCreate()">Create</button></div>
         <div>
             <table class="table" id="urlTable">
                 <tr>
@@ -24,19 +42,19 @@
             </table>
         </div>
         <div id='createUpdateForm' style="display: none">
-                <h2><span id="createLabel">Create a</span> <span id="updateLabel">update</span> URL Link</h2>
-                <input type="hidden" name="id"/>
-                URL: <input type="text" name="URL" /><br/>
-                Type: <select id="type" name="Type">
-                          <option value=""></option>
+                <h2 class="container"><span id="createLabel">Create a</span> <span id="updateLabel">update</span> URL Link</h2>
+                <input  type="hidden" name="id"/>
+                <input class="input" type="text" name="URL" placeholder="URL" /><br/>
+                <select class="select" id="type" name="Type" >
                           <option value="Email">Email</option>
                           <option value="PDF">PDF</option>
                           <option value="Word">Word</option>
                           <option value="excel">Excel</option>
+                          <option value=""></option>
                       </select>
                 <br>
 
-                Score: <select id="score" name="Score">
+                <select class="select" id="score" name="Score">
                       <option value="10">10</option>
                       <option value="20">20</option>
                       <option value="30">30</option>
@@ -45,14 +63,8 @@
                   </select>
                 <br>
                 
-                <!-- Type: <input type="text" name="Type"/> <br/> -->
-                <!-- Score: <input type="number" name="Score"/> <br/> -->
-                <!-- Score: <select id="score" name="Score"></select> <br/> -->
-
-
-
-                <span><button id="doCreateButton" onclick="doCreate()">Create</button></span>
-                <span><button id="doUpdateButton" onclick="doUpdate()">Update</button></span>
+                <span><button id="doCreateButton" class="button" onclick="doCreate()">Create</button></span>
+                <span><button id="doUpdateButton" class="button"onclick="doUpdate()">Update</button></span>
         </div>
     </body>
     <script>
@@ -145,11 +157,11 @@
         var cell4 = rowElement.insertCell(3);
         cell4.innerHTML = url.Score
         var cell5 = rowElement.insertCell(4);
-        cell5.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
+        cell5.innerHTML = '<button class="button" onclick="showUpdate(this)">Update</button>'
         var cell6 = rowElement.insertCell(5);
-        cell6.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
+        cell6.innerHTML = '<button class="button" onclick=doDelete(this)>Delete</button>'
         var cell7 = rowElement.insertCell(6);
-        cell7.innerHTML = '<button onclick=doCheck(this)>Check</button>'
+        cell7.innerHTML = '<button class="button" onclick=doCheck(this)>Check</button>'
 
     }
 

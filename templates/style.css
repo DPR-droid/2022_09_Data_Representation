@@ -1,0 +1,130 @@
+
+head {
+  font-family: "Open Sans", sans-serif;
+  background-color: #00a2ff;
+  font-size: 16px;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #00a2ff;
+  font-size: 16px;
+}
+
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #fff;
+    text-align: center;
+}
+.text-center {
+    text-align: center;
+    padding: 8px;
+}
+
+.h1 {
+    text-align: center;
+}
+
+.wrapper {
+    background:#eeeeee;
+    text-align:justify;   
+    text-align-last:justify;
+    -moz-text-align-last:justify;
+    padding:3px;
+}
+
+.button {
+  margin: auto;
+  display: block;
+  background-color: lightgreen;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius:10px;
+  box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+  min-height:30px; 
+  min-width: 120px;
+}
+.button:hover {
+  background-color:lightcoral;
+  transition: 0.7s;
+}
+
+
+.input {
+  margin: auto;
+  display: block;
+  background-color: lightskyblue;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius:10px;
+  box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+  min-height:30px; 
+  min-width: 120px;
+}
+.input:hover {
+  background-color:lightgray;
+  transition: 0.7s;
+}
+
+.select {
+  margin: auto;
+  display: block;
+  background-color: lightskyblue;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius:10px;
+  box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+  min-height:30px; 
+  min-width: 120px;
+}
+.select:hover {
+  background-color:lightgray;
+  transition: 0.7s;
+}
+
+
+/* https://dev.to/dcodeyt/creating-beautiful-html-tables-with-css-428l */
+/* Make tables nice */
+.table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+
+.table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
