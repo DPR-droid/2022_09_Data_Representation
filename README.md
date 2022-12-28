@@ -94,6 +94,17 @@ This will create a table called url_checked with the following columns:
 - site_list: a string column with a maximum length of 2048 characters.
 - Date_checked: a datetime column.
 
+**user table**
+
+    CREATE TABLE `user` (
+    `id` int unsigned NOT NULL AUTO_INCREMENT,
+    `name` varchar(50) NULL,
+    `email` varchar(50) NULL,
+    `pwd` varchar(255) NULL,
+    `admin` tinyint DEFAULT 0,
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 ## Example of SQL insert
 
 **links table**
