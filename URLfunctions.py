@@ -109,12 +109,6 @@ class URLfunctions:
         else:
             print('Maybe an error with the code')
         
-        print("\n\n################## VirusTotal Stats ##################")
-        print("First scan date: " + result['scan_date'])
-        print("Total sites checked: " + str(result['total']))
-        print("Unrated site count: " + str(count))
-        print("\n##################VirusTotal Verdict##################")
-        print("Malicious/suspicious site count: " + str(result['positives']))
 
         vtScan = result['scan_date']
         TSC = result['total']
@@ -126,22 +120,21 @@ class URLfunctions:
         x = datetime.datetime.now()
         str_now = x.strftime('%Y-%m-%d %H:%M:%S')
 
-        print(len(susurl))
-        print(finallist)
+        # print(len(susurl))
+        # print(finallist)
 
         values = (id, vtScan ,TSC, USC, SSCount, finallist, str_now)
 
         sql="INSERT INTO url_checked (cid, VT_First_scan_date, Total_sites_checked, Unrated_site_count, suspicious_site, site_list, Date_checked) values (%s,%s,%s,%s,%s,%s,%s)"
         
-        print(sql, values)
+        # print(sql, values)
         
         cursor.execute(sql, values)
         
         self.connection.commit()
-        # #newid = cursor.lastrowid
         self.closeAll()
 
-        return results
+        return finallist
 
 
     def delete(self, id):

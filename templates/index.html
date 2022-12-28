@@ -122,7 +122,6 @@
         var rowElement = r.parentNode.parentNode;
         var index = rowElement.rowIndex;
         checkURLAjax(rowElement.getAttribute("id"));
-        // tableElement.checkRow(index);
     }
 
     function doDelete(r){
@@ -276,7 +275,7 @@
             "dataType": "JSON",
             contentType: "application/json; charset=utf-8",
             "success":function(result){
-                //console.log(result);
+                console.log(result);
                   
             },
             "error":function(xhr,status,error){
