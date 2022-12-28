@@ -16,10 +16,10 @@
       <h1 class="container">URL DB</h1>
       <div class="wrapper">
           <p>
-              <a href="check.html" class="linktext">URL Status</a> 
+              <a href="check.html" class="linktext">URLStatus</a> 
               <!-- <a href="dashboard2.html" class="linktext">PieChart</a>  
               <a href="uploader.html" margin-left: 10px;>Uploader</a>  -->
-              <a href="/" class="linktext">LogOut</a> 
+              <a href="http://127.0.0.1:5000/logout" class="linktext">LogOut</a> 
           </p>
       </div>
     </div>
@@ -212,8 +212,8 @@
 
     function getAllAjax(){
         $.ajax({
-          // pythonanywhere.com  
-          // "url": "/urls",
+            // pythonanywhere.com  
+            // "url": "/urls",
             "url": "http://127.0.0.1:5000/urls",
             "method":"GET",
             "data":"",
@@ -236,8 +236,8 @@
     function createURLAjax(url){
         console.log(JSON.stringify(url));
         $.ajax({
-          // pythonanywhere.com  
-          // "url": "/urls",
+            // pythonanywhere.com  
+            // "url": "/urls",
             "url": "http://127.0.0.1:5000/urls",
             "method":"POST",
             "data":JSON.stringify(url),
@@ -260,8 +260,8 @@
     function updateURLAjax(url){
         console.log(JSON.stringify(url));
         $.ajax({
-          // pythonanywhere.com  
-          // "url": "/urls/"+encodeURI(url.id),
+            // pythonanywhere.com  
+            // "url": "/urls/"+encodeURI(url.id),
             "url": "http://127.0.0.1:5000/urls/"+encodeURI(url.id),
             "method":"PUT",
             "data":JSON.stringify(url),
@@ -279,8 +279,8 @@
 
     function checkURLAjax(id){
         $.ajax({
-          // pythonanywhere.com  
-          // "url": "/check/"+encodeURI(id),
+            // pythonanywhere.com  
+            // "url": "/check/"+encodeURI(id),
             "url": "http://127.0.0.1:5000/check/"+encodeURI(id),
             "method":"GET",
             "data":"",
@@ -298,8 +298,8 @@
     
     function deleteURLAjax(id){
         $.ajax({
-          // pythonanywhere.com  
-          // "url": "/urls/"+encodeURI(id),
+            // pythonanywhere.com  
+            // "url": "/urls/"+encodeURI(id),
             "url": "http://127.0.0.1:5000/urls/"+encodeURI(id),
             "method":"DELETE",
             "data":"",
@@ -315,8 +315,6 @@
         });
     }
     getAllAjax();
-  
-
     
     </script>
 </html>

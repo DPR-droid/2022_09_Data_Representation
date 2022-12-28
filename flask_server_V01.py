@@ -1,21 +1,55 @@
-from flask import Flask, jsonify, request, abort, render_template, session
+from flask import Flask, jsonify, request, abort, render_template, session, redirect, url_for, json
 from URLfunctions import URLfunctions
 
 app = Flask(__name__, static_url_path='', static_folder='templates')
 
 
-app.secret_key = "secret key"
+app.secret_key = "IlikeWednesdaybutnotfridays24152"
+
+# Login
+# https://roytuts.com/jquery-ajax-based-login-logout-using-python-flask-mysql/
+# curl -X POST http://127.0.0.1:5000/  -H "Content-Type: application/x-www-form-urlencoded" -d "username=dave@123.com&password=chicken" 
+@app.route('/', methods=['GET', 'POST'])
+def login():
+
+    if request.method == 'POST':
+        session.pop('username', None)
+        
+
+        username = request.form['username']
+        password = request.form['password']
+
+        user = URLfunctions.login(username, password)
+
+        #print(user)
+
+        if user == True:
+            session['username'] = user
+            resp =  jsonify({'message' : 'User logged in successfully'})
+            resp.status_code = 200
+            print(resp)
+            return redirect(url_for('index'))
+
+        else:
+            resp = jsonify({'message' : 'Bad Request - invalid credendtials'})
+            resp.status_code = 400
+            print(resp)
+            return redirect(url_for('login'))
+                
+    return render_template('login.html')
+
+# Logout
+@app.route('/logout')
+def logout():
+	if 'username' in session:
+		session.pop('username', None)
+	return redirect(url_for('login'))
 
 # Main page
 # https://stackoverflow.com/questions/23327293/flask-raises-templatenotfound-error-even-though-template-file-exists
-@app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
-
-# # Login Page
-# @app.route('/login/page')
-# def login_page():
-# 	return render_template('login.html')
 
 # Get all
 # curl "http://127.0.0.1:5000/urls"
@@ -90,32 +124,6 @@ def check(id):
 def delete(id):
     URLfunctions.delete(id)
     return jsonify({"done":True})
-
-
-# @app.route('/login', methods=['POST'])
-# def login():
-# 	_json = request.json
-# 	#print(_json)
-# 	_username = _json['username']
-# 	_password = _json['password']
-	
-# 	if _username and _password:
-# 		user = URLfunctions.login(_username, _password)
-		
-# 		if user != None:
-# 			session['username'] = user
-# 			return jsonify({'message' : 'User logged in successfully'})
-
-# 	resp = jsonify({'message' : 'Bad Request - invalid credendtials'})
-# 	resp.status_code = 400
-# 	return resp
-
-# @app.route('/logout')
-# def logout():
-# 	if 'username' in session:
-# 		session.pop('username', None)
-# 	return jsonify({'message' : 'You successfully logged out'})
-
 
 
 

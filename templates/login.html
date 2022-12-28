@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>jQuery AJAX Login Logout using Python Flask MySQL</title>
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/auth.js') }}"/>
-		<script type="text/javascript">
-			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-		</script>
-	</head>
-<body>
+    <head>
+        <title>Login Page</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-	<div>
-		<ul style="list-style: none; float: left;">
-			<li><a href="{{ url_for('.home_page') }}">Home</a></li>
-			<div id="sign">
-				<li><a href="#">Sign Up</a></li>
-				<li><a href="{{ url_for('.login_page') }}">Login</a></li>
-			</div>
-			<div id="logoff" style="display: none;">
-				<li><a href="#" id="logout">Log Off</a></li>
-			</div>
-		</ul>
-	</div>
+        <!-- https://stackoverflow.com/questions/22259847/application-not-picking-up-css-file-flask-python -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+      </head>
 
-	<div style="width: 500px; margin: auto;">
-	
-		<div id="msg"></div>
-		<div style="clear: both;"></div>
-		<div id="loginform">
-			<h2>Login</h2>
-			<dl>
-				<p>
-					<input id="email" value="" type="text" placeholder="Email" required>
-				</p>
-				<p>
-					<input id="password" value="" type="password" placeholder="Password" autocomplete="off" required>
-				</p>
-			</dl>
-			<p>
-				<input type="button" id="loginSubmit" value="Submit">
-			</p>
-		</div>
-		
-	</div>
-	
-</body>
-</html>
+
+	  <!-- https://github.com/PrettyPrinted/youtube_video_code/blob/master/2020/02/10/Creating%20a%20Login%20Page%20in%20Flask%20Using%20Sessions/flask_session_example/templates/login.html -->
+    <div class="container">
+      <!--Heading 1 for the sections styled with CSS in class "text-center" -->
+      <h1 class="container">Login Page</h1>
+    </div>
+	<body>
+		<section class="hero is-info is-fullheight">
+		  <div class="hero-body">
+			<div class="container">
+			  <div class="columns is-centered">
+				<div class="column is-half">
+				  <form method="POST">
+					<div class="field">
+					  <label class="label">Username</label>
+					  <div class="control has-icons-left has-icons-right">
+						<input class="input" type="text" name="username" placeholder="Username">
+						<span class="icon is-small is-left">
+						  <i class="fas fa-user"></i>
+						</span>
+					  </div>
+					</div>
+					<div class="field">
+					  <label class="label">Password</label>
+					  <p class="control has-icons-left">
+						<input class="input" type="password" name="password" placeholder="Password">
+						<span class="icon is-small is-left">
+						  <i class="fas fa-lock"></i>
+						</span>
+					  </p>
+					</div>
+					<div class="field">
+					  <p class="control">
+						<button type="submit" class="button is-success">
+						  Login
+						</button>
+					  </p>
+					</div>
+				  </form>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</section>
+	  </body>
+	  
+	  </html>

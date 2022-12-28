@@ -2,8 +2,8 @@ import mysql.connector
 import dbconfig as cfg
 from config import config as configcfg
 import requests
-import json
 import datetime
+import json
 
 
 class URLfunctions:
@@ -138,6 +138,31 @@ class URLfunctions:
         
         except:
             return str("Clear Exception")
+
+    def login(self, email, pwd):
+        cursor = self.getcursor()
+        sql="SELECT email, pwd FROM user WHERE email=%s"
+
+        values = (email,)
+
+        try:
+            cursor.execute(sql, values)
+
+            results = cursor.fetchone()
+
+            # print("SQL Password: " + str(results[1]))
+            # print("Entered password: " + pwd)
+
+            if results[1] == pwd:
+                print("This matches")
+                return True
+                
+            self.connection.commit()
+            self.closeAll()
+        
+        except Exception as e:
+            print(e)
+
 
 
     def delete(self, id):
