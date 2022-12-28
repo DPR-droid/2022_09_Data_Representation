@@ -29,9 +29,9 @@ def getAll():
 # curl "http://127.0.0.1:5000/urls/22"
 @app.route('/urls/<int:id>')
 def findById(id):
-    foundBook = URLfunctions.findByID(id)
+    foundURL = URLfunctions.findByID(id)
 
-    return jsonify(foundBook)
+    return jsonify(foundURL)
 
 # Creat new entry
 # curl -i -H "Content-Type:application/json" -X POST -d "{\"URL\":\"www.askjeves.com\",\"Type\":\"someone\",\"Score\":50}" http://127.0.0.1:5000/urls
@@ -55,8 +55,8 @@ def create():
 # curl -i -H "Content-Type:application/json" -X PUT -d "{\"URL\":\"www.askjeves.com\",\"Type\":\"PDF\",\"Score\":100}" http://127.0.0.1:5000/urls/23
 @app.route('/urls/<int:id>', methods=['PUT'])
 def update(id):
-    foundBook = URLfunctions.findByID(id)
-    if not foundBook:
+    foundURL = URLfunctions.findByID(id)
+    if not foundURL:
         abort(404)
     
     if not request.json:
@@ -66,15 +66,22 @@ def update(id):
         abort(400)
 
     if 'URL' in reqJson:
-        foundBook['URL'] = reqJson['URL']
+        foundURL['URL'] = reqJson['URL']
     if 'Type' in reqJson:
-        foundBook['Type'] = reqJson['Type']
+        foundURL['Type'] = reqJson['Type']
     if 'price' in reqJson:
-        foundBook['Score'] = reqJson['Score']
-    values = (foundBook['URL'],foundBook['Type'],foundBook['Score'],foundBook['id'])
+        foundURL['Score'] = reqJson['Score']
+    values = (foundURL['URL'],foundURL['Type'],foundURL['Score'],foundURL['id'])
     URLfunctions.update(values)
-    return jsonify(foundBook)
+    return jsonify(foundURL)
         
+
+# Check
+# curl -X GET "http://127.0.0.1:5000/check/18"
+@app.route('/check/<int:id>' , methods=['GET'])
+def check(id):
+    foundURL = URLfunctions.check(id)
+    return jsonify(foundURL)
 
     
 # Delete

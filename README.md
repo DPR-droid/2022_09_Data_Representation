@@ -58,8 +58,8 @@ This will create a table called links with four columns:
 - curl -X DELETE "http://127.0.0.1:5000/urls/18"
 
 
-
 ## www.pythonanywhere.com
 
 http://daveg00398318.pythonanywhere.com/
+
 

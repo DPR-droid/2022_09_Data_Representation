@@ -122,7 +122,7 @@
         var rowElement = r.parentNode.parentNode;
         var index = rowElement.rowIndex;
         checkURLAjax(rowElement.getAttribute("id"));
-        tableElement.checkRow(index);
+        // tableElement.checkRow(index);
     }
 
     function doDelete(r){
@@ -270,7 +270,7 @@
         $.ajax({
           // pythonanywhere.com  
           // "url": "/urls/"+encodeURI(id),
-            "url": "http://127.0.0.1:5000/urls/"+encodeURI(id),
+            "url": "http://127.0.0.1:5000/check/"+encodeURI(id),
             "method":"GET",
             "data":"",
             "dataType": "JSON",
