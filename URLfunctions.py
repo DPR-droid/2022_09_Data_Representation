@@ -1,6 +1,5 @@
 import mysql.connector
 import dbconfig as cfg
-import vt # imported the virustotal.
 from config import config as configcfg
 import requests
 import json

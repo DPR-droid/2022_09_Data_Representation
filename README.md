@@ -131,11 +131,16 @@ This will create a table called url_checked with the following columns:
 
 
 ## www.pythonanywhere.com
-Version 2 currently available on pythonanywhere.com
+Version 5 currently available on pythonanywhere.com
 
 http://daveg00398318.pythonanywhere.com/
 
+Update files:
 
+templates/index.html
+- update requirments.txt
+- uncomment/comment pythonanywhere code
+- Do not upload "dbconfig.py" **pythonanywhere DB config file setup**
 
 
 
