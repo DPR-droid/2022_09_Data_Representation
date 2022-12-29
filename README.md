@@ -21,8 +21,13 @@ This project is based on **Topic09-linking to db**
 10. Hosted online Pythonanywhere.com
 
 ## Overview of Project Functionality
+This display the users experience from login to CRUD to logout
 
-### Login Page
+## 1. Login Page
+
+5. Logging in page with authorization
+6. Second Database to store users credentials  **user table**
+
 The user will arrive at the login landing page:
 
 ![Login_01.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/Login_01.PNG?raw=true)
@@ -36,7 +41,12 @@ The **flask_server_V01.py "login"** function is called which handles a login req
 - If the  **flask_server_V01.py "login"** function returns **False**, a message is returned indicating that the login request was invalid.
     - The user is returned to login landing page.
 
-### URL DB Page
+## 2. URL DB Page
+
+2. REST API, (to perform CRUD operations) 
+3. Database table **links table**
+4. Web interface, using AJAX
+
 After successfully login the user will arrive at URL DB page performing CRUD operations
 
 CRUD stands for Create, Read, Update, and Delete. These are the four basic functions of persistent storage, and are commonly used to describe the basic database operations.
@@ -121,6 +131,13 @@ The page is updated to reflect the changes made to the urls database with the de
 ### SQL View
 
 ![CRUD_09.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_09.PNG?raw=true)
+
+
+## Version 2 Virustotal
+The project requested the following:
+7. Server Links to some third party API 
+8. The third party API requires authentication
+9. Third Database to store results of third party API **url_checked table**
 
 
 
