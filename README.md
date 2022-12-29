@@ -46,18 +46,18 @@ CRUD stands for Create, Read, Update, and Delete. These are the four basic funct
 - **Update**: Modifying an existing record or object in the database.
 - **Delete**: Removing a record or object from the database.
 
-### Read
+## Read
 
 The user will be first introduced to **Read**: This retrieves all the records stored in the urls database and displays them.
 
 ![CRUD_01.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_01.PNG?raw=true)
 
-### Create
-- Note: **Create a URL Link** is hidden on the index.html page until the **Create** button is clicked.
-
+## Create
 The user can select the **Create** button
 
 ![CRUD_04.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_04.PNG?raw=true)
+
+- Note: **Create a URL Link** is hidden on the index.html page until the **Create** button is clicked.
 
 The user enters the details URL, Type, Score
 
@@ -69,22 +69,22 @@ The page is updated to reflect the changes made to the urls database with the ne
 
 ![CRUD_05.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_05.PNG?raw=true)
 
-### Update
+## Update
 The user can select the **Update** button: This retrieves the record stored at **id** in the urls database and display it on a form **update URL Link**.
 
 Then user selects the **Update** button for the entry example **id : 57, URL : dogslife.com.com, Type : excel, Score 10** 
 
-**Web Entry**
+### HTML View
 
-![CRUD_02.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_03.PNG?raw=true)
+![CRUD_02.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_02.PNG?raw=true)
 
-**SQL Entry**
+### SQL View
 
 ![CRUD_09.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_09.PNG?raw=true)
 
 - Note: **update URL Link** is hidden on the index.html page until the **Update** button is clicked.
 
-**Web Entry**
+### HTML View
 
 ![CRUD_03.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_03.PNG?raw=true)
 
@@ -94,33 +94,31 @@ The page is updated to reflect the changes made to the urls database with the ne
 
 ![CRUD_05.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_05.PNG?raw=true)
 
-**SQL Entry**
+### SQL View
 
 ![CRUD_10.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_10.PNG?raw=true)
 
-
-
-### Delete
+## Delete
 
 The user can select the **Delete** button: This retrieves the record stored at **id** in the urls database and deletes the entry.
 
 Example: **id : 60, URL : daiscool.com**
 
-**Web Entry**
+### HTML View
 
 ![CRUD_05.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_05.PNG?raw=true)
 
-**SQL Entry**
+### SQL View
 
 ![CRUD_07.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_07.PNG?raw=true)
 
 The page is updated to reflect the changes made to the urls database with the deleted entry no longer displayed 
 
-**Web Entry**
+### HTML View
 
 ![CRUD_08.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_08.PNG?raw=true)
 
-**SQL Entry**
+### SQL View
 
 ![CRUD_09.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_09.PNG?raw=true)
 
