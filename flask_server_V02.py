@@ -3,7 +3,7 @@
 # Author: David Ryan
 # Student ID: G00398318
 
-from flask import Flask, jsonify, request, abort, render_template, session, redirect, url_for, json
+from flask import Flask, jsonify, request, abort, render_template, session, redirect, url_for
 from URLfunctions import URLfunctions
 
 app = Flask(__name__, static_url_path='', static_folder='templates')

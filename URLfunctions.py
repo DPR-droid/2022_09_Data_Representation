@@ -3,7 +3,6 @@ import dbconfig as cfg
 from config import config as configcfg
 import requests
 import datetime
-import json
 
 # The URLfunctions class is a utility class that has methods for performing various operations on the links table in a MySQL database
 class URLfunctions:
@@ -288,7 +287,8 @@ class URLfunctions:
         
         print("delete done")
     
-    # The convertToDictionary function converts a database query result represented as a tuple to a dictionary object. The colnames variable is a list of column names for the database table. 
+    # The convertToDictionary function converts a database query result represented as a tuple to a dictionary object with 'id','URL','Type', "Score"
+    # The colnames variable is a list of column names for the database table. 
     # The item variable is an empty dictionary that will be used to store the key-value pairs for the dictionary object.
     # The function first checks if the result variable is not None. If it's not None, the function iterates over the colnames list, 
     # using the enumerate function to get the index and value for each element in the list. 
@@ -305,7 +305,9 @@ class URLfunctions:
         
         return item
 
-    # The convertToDictionary_V02 function converts a database query result represented as a tuple to a dictionary object. The colnames variable is a list of column names for the database table. 
+    # The convertToDictionary_V02 function converts a database query result represented as a tuple to a dictionary object includes two extra objects "Suspicious", "List" 
+    # generated from getAll_V02 SQL SELECT statement that retrieves data from two tables: links and url_checked. 
+    # The colnames variable is a list of column names for the database table. 
     # The item variable is an empty dictionary that will be used to store the key-value pairs for the dictionary object.
     # The function first checks if the result variable is not None. If it's not None, the function iterates over the colnames list, 
     # using the enumerate function to get the index and value for each element in the list. 
