@@ -9,7 +9,6 @@ The purpose of this repository is to demonstrate the learning outcomes of the Da
 
 This project is based on **Topic09-linking to db** 
 
-
 1. A flask server
 2. REST API, (to perform CRUD operations) 
 3. Database table **links table**
@@ -20,6 +19,33 @@ This project is based on **Topic09-linking to db**
 8. The third party API requires authentication
 9. Third Database to store results of third party API **url_checked table**
 10. Hosted online Pythonanywhere.com
+
+## Overview of Project 
+
+### Login Page
+The user will arrive at the login landing page:
+
+![Login_01.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/Login_01.PNG?raw=true)
+
+The **flask_server_V01.py "login"** function is called which handles a login request made to a web application. The function first checks to see if the request method is "POST". If it is, it retrieves the user's username and password from the request form, and calls **URLfunctions.py** module **"login"** function with these values as arguments. 
+
+**URLfunctions.py "login"** function receives an email and password as input, and uses them to query a database table called "user" for a matching email. If no match is found, it returns False. If a match is found, it checks if the stored password for that email matches the provided password. If they match, it returns True. If they don't match, it returns False. If an exception occurs during the execution of the SQL query or the fetching of the results, it is caught and printed.
+
+- If the **flask_server_V01.py "login"** function returns **True**, the user's session is set with the value of the user and a message is returned indicating that the user was logged in successfully. 
+    - The user is brought to the index page
+- If the  **flask_server_V01.py "login"** function returns **False**, a message is returned indicating that the login request was invalid.
+    - The user is returned to login landing page.
+
+### URL DB Page
+After successfully login the user will arrive at URL DB page performing CRUD operations
+
+![CRUD_01.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_01.PNG?raw=true)
+
+
+![CRUD_02.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_02.PNG?raw=true)
+
+
+![CRUD_03.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_03.PNG?raw=true)
 
 
 ## Github Folder structure
