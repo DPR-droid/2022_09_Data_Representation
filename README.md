@@ -20,7 +20,7 @@ This project is based on **Topic09-linking to db**
 9. Third Database to store results of third party API **url_checked table**
 10. Hosted online Pythonanywhere.com
 
-## Overview of Project 
+## Overview of Project Functionality
 
 ### Login Page
 The user will arrive at the login landing page:
@@ -39,13 +39,66 @@ The **flask_server_V01.py "login"** function is called which handles a login req
 ### URL DB Page
 After successfully login the user will arrive at URL DB page performing CRUD operations
 
+CRUD stands for Create, Read, Update, and Delete. These are the four basic functions of persistent storage, and are commonly used to describe the basic database operations.
+
+- **Create**: Inserting a new record or object into the database.
+- **Read**: Retrieving a record or object from the database.
+- **Update**: Modifying an existing record or object in the database.
+- **Delete**: Removing a record or object from the database.
+
+### Read
+
+The user will be first introduced to **Read**: This retrieves all the records stored in the urls database and displays them.
+
 ![CRUD_01.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_01.PNG?raw=true)
 
+### Create
+- Note: **Create a URL Link** is hidden on the index.html page until the **Create** button is clicked.
+
+The user can select the **Create** button
+
+![CRUD_04.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_04.PNG?raw=true)
+
+The user enters the details URL, Type, Score
+
+![CRUD_06.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_06.PNG?raw=true)
+
+Then clicks the **Create** button
+
+### Update
+- Note: **update URL Link** is hidden on the index.html page until the **Update** button is clicked.
+
+The user can select the **Update** button: This retrieves the record stored at **id** in the urls database and display it on a form **update URL Link**.
+
+![CRUD_03.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_03.PNG?raw=true)
+
+The user can change any details of that selected item
 
 ![CRUD_02.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_02.PNG?raw=true)
 
+Then clicks the **Update** button
 
-![CRUD_03.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_03.PNG?raw=true)
+### Delete
+
+The user can select the **Delete** button: This retrieves the record stored at **id** in the urls database and deletes the entry.
+
+Example: **id : 60, URL : daiscool.com**
+
+**Web Entry**
+![CRUD_05.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_05.PNG?raw=true)
+
+**SQL Entry**
+![CRUD_07.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_07.PNG?raw=true)
+
+The page is updated to reflect the changes made to the urls database with the deleted entry no longer displayed 
+
+
+**Web Entry**
+![CRUD_08.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_08.PNG?raw=true)
+
+**SQL Entry**
+![CRUD_09.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_09.PNG?raw=true)
+
 
 
 ## Github Folder structure

@@ -32,7 +32,9 @@
       </div>
     </div>
 
-
+    <!-- This HTML code defines a body element with a div containing a button element with the id "showCreateButton" 
+        and an onclick event that calls the showCreate() function when clicked. It also has a div element containing a table element with id "urlTable" and several table row and table header elements. 
+        The table is used to display a list of URLs. -->
     <body>
         <div> <button class="button" id="showCreateButton" onclick="showCreate()">Create</button></div>
         <div>
@@ -49,6 +51,14 @@
                 
             </table>
         </div>
+
+        <!-- The div element with id "createUpdateForm" and style "display: none" that is initially hidden. 
+             It contains a h2 element with the text "Create a URL Link" and span elements with the text "update" and "URL Link" that are initially hidden.
+             The h2 element also has a class "container". 
+            
+             The div element also contains an input element with type "hidden" and name "id", an input element with type "text" and name "URL", 
+             and placeholder text "URL", a select element with id "type" and name "Type" and several option elements, 
+             and another select element with id "score" and name "Score" and several option elements. -->
         <div id='createUpdateForm' style="display: none">
                 <h2 class="container"><span id="createLabel">Create a</span> <span id="updateLabel">update</span> URL Link</h2>
                 <input  type="hidden" name="id"/>
@@ -69,7 +79,8 @@
                       <option value="50">50</option>
                   </select>
                 <br>
-                
+                <!-- There are two button elements with id "doCreateButton" and "doUpdateButton" and classes "button", 
+                each with an onclick event that calls the doCreate() and doUpdate() functions, respectively, when clicked. -->
                 <span><button id="doCreateButton" class="button" onclick="doCreate()">Create</button></span>
                 <span><button id="doUpdateButton" class="button"onclick="doUpdate()">Update</button></span>
         </div>
@@ -163,7 +174,8 @@
         tableElement.deleteRow(index);
     }
 
-    // The addURLToTable() function adds a new row to the table with the id attribute "urlTable". It sets the id attribute of the row to the id of the URL, and inserts cells with the URL data. It also adds buttons for updating, deleting, and checking the URL.
+    // The addURLToTable() function adds a new row to the table with the id attribute "urlTable". It sets the id attribute of the row to the id of the URL, 
+    // and inserts cells with the URL data. It also adds buttons for updating, deleting, and checking the URL.
     function addURLToTable(url){
         var tableElement = document.getElementById('urlTable')
         var rowElement = tableElement.insertRow(-1)
@@ -336,7 +348,7 @@
             contentType: "application/json; charset=utf-8",
             "success":function(result){
                 //console.log(result);
-                // location.reload(true);   
+                location.reload(true);   
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);

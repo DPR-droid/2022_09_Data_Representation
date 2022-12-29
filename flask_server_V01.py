@@ -15,6 +15,10 @@ app.secret_key = "IlikeWednesdaybutnotfridays24152"
 # https://roytuts.com/jquery-ajax-based-login-logout-using-python-flask-mysql/
 # https://github.com/PrettyPrinted/youtube_video_code/blob/master/2020/02/10/Creating%20a%20Login%20Page%20in%20Flask%20Using%20Sessions/flask_session_example/app.py
 # curl -X POST http://127.0.0.1:5000/  -H "Content-Type: application/x-www-form-urlencoded" -d "username=dave@123.com&password=chicken" 
+# When a user submits a request to this route with the POST method, the code will check the provided username and password against the login function in the URLfunctions module. 
+# If the login function returns True, the user's session will be set and they will be redirected to the 'index' page. 
+# If the login function returns False, the user will be redirected back to the login page with an error message. 
+# If the request method is not POST, the login page template will be rendered and displayed to the user.
 @app.route('/', methods=['GET', 'POST'])
 def login():
 
@@ -45,6 +49,10 @@ def login():
     return render_template('login.html')
 
 # Logout
+# When a request is made to this endpoint, the code checks if there is a 'username' key in the session dictionary. 
+# If there is, it removes the key and its associated value from the session dictionary. 
+# Finally, the code redirects the user to the login page. 
+# This effectively logs the user out of the application by removing their session information.
 @app.route('/logout')
 def logout():
 	if 'username' in session:
@@ -63,6 +71,14 @@ def index():
 def getAll():
     #print("in getall")
     results = URLfunctions.getAll()
+    return jsonify(results)
+
+# Get all
+# curl "http://127.0.0.1:5000/urls"
+@app.route('/urls_v02')
+def getAll_V02():
+    #print("in getall")
+    results = URLfunctions.getAll_V02()
     return jsonify(results)
 
 # Find by ID
@@ -97,8 +113,7 @@ def create():
 def update(id):
     foundURL = URLfunctions.findByID(id)
     if not foundURL:
-        abort(404)
-    
+        abort(404)    
     if not request.json:
         abort(400)
     reqJson = request.json
@@ -123,6 +138,10 @@ def update(id):
 
 # Check
 # curl -X GET "http://127.0.0.1:5000/check/18"
+# HTTP GET requests sent to the '/check/int:id' URL. When a request is made to this URL, the 'check' function is executed and the 'id' parameter is passed to it. 
+# The function then calls the 'check_sql' method of the 'URLfunctions' object, passing in the 'id' parameter. 
+# The 'check_sql' method returns a dictionary containing the data for the URL with the specified 'id', 
+# which is then converted to a JSON object using the 'jsonify' function and returned in the response to the client.
 @app.route('/check/<int:id>' , methods=['GET'])
 def check(id):
     foundURL = URLfunctions.check_sql(id)
