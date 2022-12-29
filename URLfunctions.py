@@ -148,7 +148,7 @@ class URLfunctions:
                 TSC = 0
                 USC = 0
                 SSCount = 0
-                finallist = "response_code"
+                finallist = "No Verdict 1"
 
                 values = (id, vtScan ,TSC, USC, SSCount, finallist, str_now)
 
@@ -158,7 +158,7 @@ class URLfunctions:
                 
                 self.connection.commit()
                 self.closeAll()
-                return str("response_code")
+                return str("No Verdict 1")
 
 
 
@@ -177,7 +177,7 @@ class URLfunctions:
                 TSC = 0
                 USC = 0
                 SSCount = 0
-                finallist = "Error 1"
+                finallist = "No Verdict 2"
 
                 values = (id, vtScan ,TSC, USC, SSCount, finallist, str_now)
 
@@ -187,7 +187,7 @@ class URLfunctions:
                 
                 self.connection.commit()
                 self.closeAll()
-                return str("Clear with error")
+                return str("No Verdict 2")
             
 
             vtScan = result['scan_date']
@@ -251,18 +251,23 @@ class URLfunctions:
             print(e)
 
     
-    # getAll_V02: This method retrieves all rows from the links table and returns them as a list of dictionaries, where each dictionary represents a
-    # row with keys being the column names and values being the column values.
+    # getAll_V02: This is an update of getAll, The SQL SELECT statement retrieves data from two tables: links and url_checked. 
+    # The SELECT clause specifies which columns to retrieve from each table. The FROM clause specifies the tables to retrieve data from. 
+    # The LEFT JOIN clause specifies that the two tables should be joined based on the cid column in the url_checked table and the id column in the links table.
+    # The LEFT JOIN means that all rows from the links table will be included in the results, even if there is no matching row in the url_checked table. 
+    # If there is no matching row in url_checked, then the suspicious_site and site_list columns will be NULL. 
+    # The order by clause specifies that the results should be sorted by the id column in the links table, in descending order (i.e., the newest rows will be displayed first).
     def getAll_V02(self):
         cursor = self.getcursor()
-        sql="SELECT links.id, links.url, links.type, links.score, suspicious_site, site_list FROM links JOIN url_checked ON links.id = url_checked.cid order by links.id DESC"
+        # SQL statement Left joins 
+        sql="SELECT links.id, links.url, links.type, links.score, suspicious_site, site_list FROM links LEFT JOIN url_checked ON links.id = url_checked.cid order by links.id DESC"
         cursor.execute(sql)
         results = cursor.fetchall()
         returnArray = []
         print(results)
         for result in results:
             print(result)
-            returnArray.append(self.convertToDictionary(result))
+            returnArray.append(self.convertToDictionary_V02(result))
         
         self.closeAll()
         return returnArray
