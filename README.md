@@ -65,18 +65,40 @@ The user enters the details URL, Type, Score
 
 Then clicks the **Create** button
 
+The page is updated to reflect the changes made to the urls database with the newly creates entry displayed Example: **id : 60, URL : daiscool.com** 
+
+![CRUD_05.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_05.PNG?raw=true)
+
 ### Update
+The user can select the **Update** button: This retrieves the record stored at **id** in the urls database and display it on a form **update URL Link**.
+
+Then user selects the **Update** button for the entry example **id : 57, URL : dogslife.com.com, Type : excel, Score 10** 
+
+**Web Entry**
+
+![CRUD_02.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_03.PNG?raw=true)
+
+**SQL Entry**
+
+![CRUD_09.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_09.PNG?raw=true)
+
 - Note: **update URL Link** is hidden on the index.html page until the **Update** button is clicked.
 
-The user can select the **Update** button: This retrieves the record stored at **id** in the urls database and display it on a form **update URL Link**.
+**Web Entry**
 
 ![CRUD_03.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_03.PNG?raw=true)
 
-The user can change any details of that selected item
-
-![CRUD_02.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_02.PNG?raw=true)
-
 Then clicks the **Update** button
+
+The page is updated to reflect the changes made to the urls database with the newly updated entry displayed Example: **id : 57, URL : dogslife.com.com, Type : PDF, Score 50** 
+
+![CRUD_05.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_05.PNG?raw=true)
+
+**SQL Entry**
+
+![CRUD_10.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_10.PNG?raw=true)
+
+
 
 ### Delete
 
@@ -85,18 +107,21 @@ The user can select the **Delete** button: This retrieves the record stored at *
 Example: **id : 60, URL : daiscool.com**
 
 **Web Entry**
+
 ![CRUD_05.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_05.PNG?raw=true)
 
 **SQL Entry**
+
 ![CRUD_07.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_07.PNG?raw=true)
 
 The page is updated to reflect the changes made to the urls database with the deleted entry no longer displayed 
 
-
 **Web Entry**
+
 ![CRUD_08.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_08.PNG?raw=true)
 
 **SQL Entry**
+
 ![CRUD_09.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_09.PNG?raw=true)
 
 
