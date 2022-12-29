@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<!-- # Data Representation
+# Lecturer: Andrew Beatty
+# Author: David Ryan
+# Student ID: G00398318 -->
+
 <html>
     <head>
         <title> View URLs</title>
@@ -17,9 +23,6 @@
       <div class="wrapper">
           <p>
               <a href="check.html" class="linktext">URLStatus</a> 
-              <!-- <a href="dashboard2.html" class="linktext">PieChart</a>  
-              <a href="uploader.html" margin-left: 10px;>Uploader</a>  -->
-              
               <!-- pythonanywhere.com  
               <a href="/" class="linktext">LogOut</a> -->
               <a href="http://127.0.0.1:5000/logout" class="linktext">LogOut</a> 
@@ -72,6 +75,7 @@
     </body>
     <script>
     
+    // The showCreate function hides the showCreateButton and urlTable elements and displays the createUpdateForm element, as well as updating the labels and buttons for creating a new URL. 
     function showCreate(){
         document.getElementById('showCreateButton').style.display="none"
         document.getElementById('urlTable').style.display="none"
@@ -85,12 +89,14 @@
 
     }
 
+    // The showViewAll function does the opposite, showing the showCreateButton and urlTable elements and hiding the createUpdateForm element. 
     function showViewAll(){
         document.getElementById('showCreateButton').style.display="block"
         document.getElementById('urlTable').style.display="block"
         document.getElementById('createUpdateForm').style.display="none"
     }
 
+    // The showUpdate function is similar to showCreate, but it is used when updating an existing URL rather than creating a new one. It also populates the form with the data from the selected URL by calling the populateFormWithURL function. The getURLFromRow function is used to extract the URL data from a row in the table and return it as an object.
     function showUpdate(buttonElement){
         document.getElementById('showCreateButton').style.display="none"
         document.getElementById('urlTable').style.display="none"
@@ -109,7 +115,7 @@
         var url = getURLFromRow(rowElement)
         populateFormWithURL(url)
     }
-
+    // The doCreate() function retrieves values from an HTML form with the id attribute "createUpdateForm" and creates a new URL in the database using an Ajax request.
     function doCreate(){
         var form = document.getElementById('createUpdateForm')
 
@@ -122,6 +128,7 @@
         createURLAjax(url)       
     }
 
+    // The doUpdate() function updates an existing URL in the database using an Ajax request. It retrieves the URL data from the form and updates the corresponding row in the table.
     function doUpdate(){
         var url = getURLFromForm();
         var rowElement = document.getElementById(url.id);
@@ -131,14 +138,19 @@
         clearForm();
         showViewAll();
     }
-
+    
+    // The doCheck() function sends an Ajax request to check a URL in the database. It gets the URL data from the row that the user clicked.
     function doCheck(r){
         var tableElement = document.getElementById('urlTable');
         var rowElement = r.parentNode.parentNode;
         var index = rowElement.rowIndex;
+        console.log(tableElement)
+        console.log(rowElement)
+        console.log(index)
         checkURLAjax(rowElement.getAttribute("id"));
     }
 
+    // The doDelete() function deletes a URL from the database using an Ajax request. It removes the corresponding row from the table.
     function doDelete(r){
         var tableElement = document.getElementById('urlTable');
         var rowElement = r.parentNode.parentNode;
@@ -147,6 +159,7 @@
         tableElement.deleteRow(index);
     }
 
+    // The addURLToTable() function adds a new row to the table with the id attribute "urlTable". It sets the id attribute of the row to the id of the URL, and inserts cells with the URL data. It also adds buttons for updating, deleting, and checking the URL.
     function addURLToTable(url){
         var tableElement = document.getElementById('urlTable')
         var rowElement = tableElement.insertRow(-1)
@@ -168,6 +181,7 @@
 
     }
 
+    // The clearForm() function clears the values in an HTML form with the id attribute "createUpdateForm".
     function clearForm(){
         var form = document.getElementById('createUpdateForm')
 
@@ -176,6 +190,7 @@
         form.querySelector('select[name="Score"]').value=''
     }
 
+    // The getURLFromRow() function retrieves the URL data from a table row. It returns an object with the id, URL, Type, and Score of the URL.
     function getURLFromRow(rowElement){
         var car ={}
         url.id  = rowElement.getAttribute('id')
@@ -185,6 +200,7 @@
         return url
     }
 
+    // The setURLInRow() function sets the values of a table row to the values of a URL. It takes a row element and a URL object as arguments, and updates the cells of the row with the data from the URL.
     function setURLInRow(rowElement, url){
         rowElement.cells[0].firstChild.textContent= url.id  
         rowElement.cells[1].firstChild.textContent= url.URL 
@@ -192,6 +208,7 @@
         rowElement.cells[3].firstChild.textContent= url.Score
     }
 
+    // The populateFormWithURL() function fills an HTML form with the values of a URL. It takes a URL object as an argument and sets the values of the form elements to the values of the URL.
     function populateFormWithURL(url){
         var form = document.getElementById('createUpdateForm')
         form.querySelector('input[name="id"]').disabled = true
@@ -202,6 +219,7 @@
         return url
     }
 
+    // The getURLFromForm() function retrieves the values of an HTML form and returns them as a URL object. It reads the values of the form elements and returns an object with the id, URL, Type, and Score of the URL.
     function getURLFromForm(){
         var form = document.getElementById('createUpdateForm')
         var url = {}
@@ -213,6 +231,7 @@
         return url
     }
 
+    // The getAllAjax() function makes an HTTP GET request to retrieve a list of URLs from a server. The request is made using the $.ajax() function from the jQuery library. The function specifies the URL of the server, the HTTP method to use (GET), the data to send (an empty string), the data type to expect in the response (JSON), and functions to handle the success and error cases of the request. If the request is successful, the function loops through the list of URLs returned by the server and adds them to the table using the addURLToTable() function.
     function getAllAjax(){
         $.ajax({
             // pythonanywhere.com  
@@ -235,7 +254,7 @@
 
     }
 
-
+    // The createURLAjax() function makes an HTTP POST request to create a new URL on the server. It has a similar structure to the getAllAjax() function, but it uses the POST method and sends the data for the new URL as the data parameter. If the request is successful, the function adds the new URL to the table and clears the form.
     function createURLAjax(url){
         console.log(JSON.stringify(url));
         $.ajax({
@@ -259,7 +278,7 @@
         });
     }
 
-
+    // The updateURLAjax function that makes an HTTP PUT request to a server at the specified URL with the provided url object as the request body. The url object is converted to a JSON string using JSON.stringify and set as the value for the data field in the request.
     function updateURLAjax(url){
         console.log(JSON.stringify(url));
         $.ajax({
@@ -280,6 +299,7 @@
         });
     }
 
+    // The checkURLAjax function makes a GET request to the server's /check/{id} endpoint, where {id} is the ID of the URL object to be checked. It does not receive any data in the response.
     function checkURLAjax(id){
         $.ajax({
             // pythonanywhere.com  
@@ -299,6 +319,7 @@
         });
     }
     
+    // The deleteURLAjax function makes a DELETE request to the server's /urls/{id} endpoint, where {id} is the ID of the URL object to be deleted. It does not receive any data in the response.
     function deleteURLAjax(id){
         $.ajax({
             // pythonanywhere.com  

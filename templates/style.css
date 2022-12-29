@@ -1,4 +1,10 @@
+/* <!-- # Data Representation
+# Lecturer: Andrew Beatty
+# Author: David Ryan
+# Student ID: G00398318 --> */
 
+/* The font-family property is applied to the head and body elements, setting the font to "Open Sans" for the entire document. 
+The background-color property is also applied to the head and body elements, setting the background color to #00a2ff */
 head {
   font-family: "Open Sans", sans-serif;
   background-color: #00a2ff;
@@ -11,7 +17,8 @@ body {
   font-size: 16px;
 }
 
-
+/* The container class is applied to a div element and sets the maximum width to 100%, aligns the content to the center, adds padding, and sets the background color to white.
+ */
 .container {
     max-width: 100%;
     margin: 0 auto;
@@ -19,15 +26,20 @@ body {
     background-color: #fff;
     text-align: center;
 }
+
+/* The text-center class is applied to elements and centers the text within them.  */
 .text-center {
     text-align: center;
     padding: 8px;
 }
 
+/* The h1 class is applied to a heading element and centers the text. */
 .h1 {
     text-align: center;
 }
 
+
+/* The wrapper class is applied to an element and sets the background color to #eeeeee (a light gray), justifies the text, and adds padding. */
 .wrapper {
     background:#eeeeee;
     text-align:justify;   
@@ -36,6 +48,11 @@ body {
     padding:3px;
 }
 
+/* For the "button" class, the background color is set to lightgreen, the border is removed, the cursor is set to a pointer, 
+and the background color will transition over 0.3 seconds when the mouse hovers over the button. 
+The border radius is set to 10 pixels and a box shadow is applied. 
+The minimum height and width of the button are set to 30 pixels and 120 pixels, respectively. 
+When the mouse hovers over the button, the background color will transition to lightcoral over 0.7 seconds. */
 .button {
   margin: auto;
   display: block;
@@ -53,7 +70,9 @@ body {
   transition: 0.7s;
 }
 
-
+/* For the "input" and "select" classes, the same style properties are applied, 
+with the exception that the background color is set to lightskyblue. 
+When the mouse hovers over an element with either of these classes, the background color will transition to lightgray */
 .input {
   margin: auto;
   display: block;

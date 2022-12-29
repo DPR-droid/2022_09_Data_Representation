@@ -1,36 +1,64 @@
 # 2022_09_Data_Representation
 2022_09_Data_Representation
 
+
+## Introduction
+The purpose of this repository is to demonstrate the learning outcomes of the Data Representation module. 
+
+## Assessment
+
+This project is based on **Topic09-linking to db** 
+
+
+1. A flask server
+2. REST API, (to perform CRUD operations) 
+3. Database table **links table**
+4. Web interface, using AJAX
+5. Logging in page with authorization
+6. Second Database to store users credentials  **user table**
+7. Server Links to some third party API 
+8. The third party API requires authentication
+9. Third Database to store results of third party API **url_checked table**
+10. Hosted online Pythonanywhere.com
+
+
 ## Github Folder structure
 
 1. Project
-
-- Contains Big Project Description
+    - Contains Big Project Description
 
 2. Project Version 
-
-- Contains Zip Files of each iteration: ***.zip in gitignore**
+    - Contains Zip Files of each iteration: ***.zip in gitignore**
 
 3. Template
-
-Contain HTML files
-- index.html: Main file CRUD
+    Contain HTML files
+    - index.html: Main file CRUD
+    - login.html: logging in page with authorization
 
 4. venv
+    - Contains python venv **venv in gitignore**
 
-- Contains python venv **venv in gitignore**
+5. Project_Create
+    - createdb.py 
+        A Python script, you can use the mysql-connector-python library to execute the CREATE DATABASE statement and then creating the required tables on the MySQL server.
 
-5. Main folder files
+    - createsqlcfg.py
+        A Python script that will request a user's input to create a dbconfig.py file with MySQL connection details.
 
-Contains
-- config.py  **config.py in gitignore**
-- dbconfig.py  **dbconfig.py in gitignore**
-- flask_server_V01.py: contain flask app run "python flask_server_V01.py"
-- URLfunctions.py: contains functions
-- requirements.txt: required for running in venv or pythonanywhere.com run "pip install -r requirments.txt"
+    - createvtcfg.py
+        A Python script that will request input from the user and create a config.py file with the API key from Virustotal. 
+
+6. Main folder files
+    Contains
+    - config.py  **config.py in gitignore**
+    - dbconfig.py  **dbconfig.py in gitignore**
+    - flask_server_V01.py: contain flask app run "python flask_server_V01.py"
+    - URLfunctions.py: contains functions
+    - requirements.txt: required for running in venv or pythonanywhere.com run "pip install -r requirments.txt"
 
 
-## Config Files
+## Config Files structure
+Below is the structure of the config files, use createsqlcfg.py and createvtcfg.py to create these files. If you intend to run this project locally or on another hosted platform, the Flask server will not work without these file. Place the file in your root directory after creation.
 
 **dbconfig.py**
     mysql = {
@@ -45,8 +73,15 @@ Contains
     "virustotal":""
     }
 
+### Virustotal API Key
+You do not need to ask for a public API key, in order to get one you just have to [register](https://www.virustotal.com/gui/join-us) in VirusTotal Community (top right hand side of VirusTotal). Once registered, sign in into your account and you will find your public API in the corresponding menu item under your user name.
 
-## SQL Database 
+[click here](https://support.virustotal.com/hc/en-us/articles/115002088769-Please-give-me-an-API-key)
+
+## SQL
+Below is the structure of the Database and tables, use createdb.py to create. If you intend to run this project locally or on another hosted platform, the Flask server will not work without these Database and tables.
+
+## SQL Database
 
     CREATE DATABASE datareprentation;
 
@@ -140,9 +175,8 @@ This will create a table called url_checked with the following columns:
 **Delete**
 - curl -X DELETE "http://127.0.0.1:5000/urls/18"
 
-
 ## www.pythonanywhere.com
-Version 5 currently available on pythonanywhere.com
+Version 6 currently available on pythonanywhere.com
 
 http://daveg00398318.pythonanywhere.com/
 

@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<!-- # Data Representation
+# Lecturer: Andrew Beatty
+# Author: David Ryan
+# Student ID: G00398318 -->
+
 <html>
     <head>
         <title> View URLs</title>
@@ -11,15 +17,35 @@
       </head>
 
 
-      <div class="container">
-        <!--Heading 1 for the sections styled with CSS in class "text-center" -->
-        <h1 class="container">URL Status</h1>
-        <div class="wrapper">
-            <p>
-                <a href="/" class="linktext">URL DB</a> 
-                <!-- <a href="dashboard2.html" class="linktext">PieChart</a>  
-                <a href="uploader.html" margin-left: 10px;>Uploader</a>  -->
-                <a href="logout.html" class="linktext">LogOut</a> 
-            </p>
-        </div>
+    <div class="container">
+      <!--Heading 1 for the sections styled with CSS in class "text-center" -->
+      <h1 class="container">URL DB</h1>
+      <div class="wrapper">
+          <p>
+              <a href="check.html" class="linktext">URLStatus</a> 
+              <!-- <a href="dashboard2.html" class="linktext">PieChart</a>  
+              <a href="uploader.html" margin-left: 10px;>Uploader</a>  -->
+              <!-- pythonanywhere.com  
+              <a href="/" class="linktext">LogOut</a> -->
+              <a href="http://127.0.0.1:5000/logout" class="linktext">LogOut</a> 
+          </p>
       </div>
+    </div>
+
+
+    <body>
+        <div>
+            <table class="table" id="urlTable">
+                <tr>
+                        <th>id</th>
+                        <th>URL</th>
+                        <th>Type</th>
+                        <th>Score</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                        <th>Check</th>
+                </tr>
+                
+            </table>
+        </div>
+    </body>

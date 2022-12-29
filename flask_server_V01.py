@@ -1,3 +1,8 @@
+# Data Representation
+# Lecturer: Andrew Beatty
+# Author: David Ryan
+# Student ID: G00398318
+
 from flask import Flask, jsonify, request, abort, render_template, session, redirect, url_for, json
 from URLfunctions import URLfunctions
 
@@ -8,6 +13,7 @@ app.secret_key = "IlikeWednesdaybutnotfridays24152"
 
 # Login
 # https://roytuts.com/jquery-ajax-based-login-logout-using-python-flask-mysql/
+# https://github.com/PrettyPrinted/youtube_video_code/blob/master/2020/02/10/Creating%20a%20Login%20Page%20in%20Flask%20Using%20Sessions/flask_session_example/app.py
 # curl -X POST http://127.0.0.1:5000/  -H "Content-Type: application/x-www-form-urlencoded" -d "username=dave@123.com&password=chicken" 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -114,7 +120,7 @@ def update(id):
 # curl -X GET "http://127.0.0.1:5000/check/18"
 @app.route('/check/<int:id>' , methods=['GET'])
 def check(id):
-    foundURL = URLfunctions.check(id)
+    foundURL = URLfunctions.check_sql(id)
     return jsonify(foundURL)
 
     

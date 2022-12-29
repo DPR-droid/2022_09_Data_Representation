@@ -77,7 +77,24 @@ class URLfunctions:
         self.closeAll()
 
 
-    def check(self, id):
+    # Check if entry already exist in table
+    def check_sql(self, id):
+        cursor = self.getcursor()
+        sql="SELECT cid FROM url_checked WHERE cid = '%s'"
+        values = (id,)
+
+        cursor.execute(sql, values)
+        result = cursor.fetchone()
+        
+        if not result:
+            added = URLfunctions.find_vt(id)
+            return added
+        else:
+            
+            self.closeAll()
+            return result[0]
+    
+    def find_vt(self, id):
         cursor = self.getcursor()
         sql="select url from links where id = %s"
         values = (id,)
@@ -95,10 +112,33 @@ class URLfunctions:
         result = response.json()
         count = 0
         susurl = []
+
         try: 
+
+            
             if result['response_code'] == 0:
                 print('Resource does not exist in the dataset')
+                x = datetime.datetime.now()
+                str_now = x.strftime('%Y-%m-%d %H:%M:%S')
+
+                vtScan = str_now
+                TSC = 0
+                USC = 0
+                SSCount = 0
+                finallist = "response_code"
+
+                values = (id, vtScan ,TSC, USC, SSCount, finallist, str_now)
+
+                sql="INSERT INTO url_checked (cid, VT_First_scan_date, Total_sites_checked, Unrated_site_count, suspicious_site, site_list, Date_checked) values (%s,%s,%s,%s,%s,%s,%s)"
+                
+                cursor.execute(sql, values)
+                
+                self.connection.commit()
+                self.closeAll()
                 return str("response_code")
+
+
+
             elif result['positives'] != 0:
                 for key, value in result['scans'].items():
                     if value['result'] == "unrated site":
@@ -107,6 +147,23 @@ class URLfunctions:
                         susurl.append(str(key)) 
             else:
                 print('Maybe an error with the code')
+                x = datetime.datetime.now()
+                str_now = x.strftime('%Y-%m-%d %H:%M:%S')
+
+                vtScan = str_now
+                TSC = 0
+                USC = 0
+                SSCount = 0
+                finallist = "Error 1"
+
+                values = (id, vtScan ,TSC, USC, SSCount, finallist, str_now)
+
+                sql="INSERT INTO url_checked (cid, VT_First_scan_date, Total_sites_checked, Unrated_site_count, suspicious_site, site_list, Date_checked) values (%s,%s,%s,%s,%s,%s,%s)"
+                
+                cursor.execute(sql, values)
+                
+                self.connection.commit()
+                self.closeAll()
                 return str("Clear with error")
             
 
@@ -136,8 +193,8 @@ class URLfunctions:
 
             return finallist
         
-        except:
-            return str("Clear Exception")
+        except Exception as e:
+            print(e)
 
     def login(self, email, pwd):
         cursor = self.getcursor()
