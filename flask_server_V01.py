@@ -109,18 +109,26 @@ def update(id):
         foundURL['URL'] = reqJson['URL']
     if 'Type' in reqJson:
         foundURL['Type'] = reqJson['Type']
-    if 'price' in reqJson:
+    if 'Score' in reqJson:
         foundURL['Score'] = reqJson['Score']
     values = (foundURL['URL'],foundURL['Type'],foundURL['Score'],foundURL['id'])
+
+    print("#######values#######")
+    print(values)
+    print("######################")
+
     URLfunctions.update(values)
     return jsonify(foundURL)
-        
+    # return jsonify({"done":True})
 
 # Check
 # curl -X GET "http://127.0.0.1:5000/check/18"
 @app.route('/check/<int:id>' , methods=['GET'])
 def check(id):
     foundURL = URLfunctions.check_sql(id)
+    print("#######foundURL#######")
+    print(foundURL)
+    print("######################")
     return jsonify(foundURL)
 
     
@@ -130,6 +138,23 @@ def check(id):
 def delete(id):
     URLfunctions.delete(id)
     return jsonify({"done":True})
+
+# Create Graph data
+@app.route('/xchart')
+def graph():
+    return render_template('xchart.html')
+
+# Create Graph data
+# curl -i -H "Content-Type:application/json" -X POST  http://127.0.0.1:5000/xchart
+@app.route('/xchart', methods = ['POST'])
+def xchart():
+    xchart = URLfunctions.xchart()
+    print("#######foundURL#######")
+    print(xchart)
+    print("######################")
+    return jsonify(xchart)
+    
+
 
 
 

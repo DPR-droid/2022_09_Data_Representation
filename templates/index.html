@@ -22,7 +22,9 @@
       <h1 class="container">URL DB</h1>
       <div class="wrapper">
           <p>
-              <a href="check.html" class="linktext">URLStatus</a> 
+              <!-- pythonanywhere.com  
+              <a href="/graph" class="linktext">LogOut</a> -->
+              <a href="http://127.0.0.1:5000/graph" class="linktext">URLStatus</a> 
               <!-- pythonanywhere.com  
               <a href="/" class="linktext">LogOut</a> -->
               <a href="http://127.0.0.1:5000/logout" class="linktext">LogOut</a> 
@@ -56,7 +58,6 @@
                           <option value="PDF">PDF</option>
                           <option value="Word">Word</option>
                           <option value="excel">Excel</option>
-                          <option value=""></option>
                       </select>
                 <br>
 
@@ -132,8 +133,11 @@
     function doUpdate(){
         var url = getURLFromForm();
         var rowElement = document.getElementById(url.id);
+        console.log(url);
+
         updateURLAjax(url);
         setURLInRow(rowElement,url);
+
        
         clearForm();
         showViewAll();
@@ -144,9 +148,9 @@
         var tableElement = document.getElementById('urlTable');
         var rowElement = r.parentNode.parentNode;
         var index = rowElement.rowIndex;
-        console.log(tableElement)
-        console.log(rowElement)
-        console.log(index)
+        // console.log(tableElement)
+        // console.log(rowElement)
+        // console.log(index)
         checkURLAjax(rowElement.getAttribute("id"));
     }
 
@@ -271,6 +275,7 @@
                 addURLToTable(url)
                 clearForm()
                 showViewAll()
+                // location.reload(true); 
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
@@ -290,8 +295,8 @@
             "dataType": "JSON",
             contentType: "application/json; charset=utf-8",
             "success":function(result){
-               // console.log(result);
-                  
+            //    console.log(result);
+                // location.reload(true); 
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
@@ -310,8 +315,8 @@
             "dataType": "JSON",
             contentType: "application/json; charset=utf-8",
             "success":function(result){
-                console.log(result);
-                  
+                //console.log(result);
+                //location.reload(true);   
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
@@ -331,7 +336,7 @@
             contentType: "application/json; charset=utf-8",
             "success":function(result){
                 //console.log(result);
-                  
+                // location.reload(true);   
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);

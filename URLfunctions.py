@@ -67,14 +67,19 @@ class URLfunctions:
         result = cursor.fetchone()
         returnvalue = self.convertToDictionary(result)
         self.closeAll()
+
+        print("Found done")
+
         return returnvalue
 
     def update(self, values):
         cursor = self.getcursor()
-        sql="update links set URL= %s,Type=%s, Score=%s  where id = %s"
+        sql="update links set url= %s, type=%s, score=%s  where id = %s"
         cursor.execute(sql, values)
         self.connection.commit()
         self.closeAll()
+        
+        print("update done")
 
 
     # Check if entry already exist in table
@@ -207,9 +212,10 @@ class URLfunctions:
 
             results = cursor.fetchone()
 
-            # print("SQL Password: " + str(results[1]))
-            # print("Entered password: " + pwd)
-
+            if not results:
+                print("Incorrect Username and Password")
+                return False
+            
             if results[1] == pwd:
                 print("This matches")
                 return True
@@ -220,6 +226,20 @@ class URLfunctions:
         except Exception as e:
             print(e)
 
+    def xchart(self):
+        cursor = self.getcursor()
+        sql="SELECT type, COUNT(type) as type_count, SUM(suspicious_site) as suspicious_count FROM links JOIN url_checked ON links.id = url_checked.cid GROUP BY type;"
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        returnArray = []
+        print(results)
+        for result in results:
+            print(result)
+            # returnArray.append(self.convertToDictionary(result))
+        
+        self.closeAll()
+        print("data done")
+        return returnArray
 
 
     def delete(self, id):

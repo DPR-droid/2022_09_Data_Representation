@@ -37,6 +37,9 @@ This project is based on **Topic09-linking to db**
 
 4. venv
     - Contains python venv **venv in gitignore**
+        - python -m venv venv
+        - venv\Scripts\activate.bat
+        - deactivate
 
 5. Project_Create
     - createdb.py 
