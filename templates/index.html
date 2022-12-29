@@ -24,7 +24,7 @@
           <p>
               <!-- pythonanywhere.com  
               <a href="/graph" class="linktext">LogOut</a> -->
-              <a href="http://127.0.0.1:5000/graph" class="linktext">URLStatus</a> 
+              <a href="http://127.0.0.1:5000/xchart" class="linktext">URLStatus</a> 
               <!-- pythonanywhere.com  
               <a href="/" class="linktext">LogOut</a> -->
               <a href="http://127.0.0.1:5000/logout" class="linktext">LogOut</a> 
@@ -275,7 +275,7 @@
                 addURLToTable(url)
                 clearForm()
                 showViewAll()
-                // location.reload(true); 
+                location.reload(true); 
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
@@ -296,7 +296,7 @@
             contentType: "application/json; charset=utf-8",
             "success":function(result){
             //    console.log(result);
-                // location.reload(true); 
+                location.reload(true); 
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);

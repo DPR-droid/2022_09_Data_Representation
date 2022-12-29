@@ -139,24 +139,6 @@ def delete(id):
     URLfunctions.delete(id)
     return jsonify({"done":True})
 
-# Create Graph data
-@app.route('/xchart')
-def graph():
-    return render_template('xchart.html')
-
-# Create Graph data
-# curl -i -H "Content-Type:application/json" -X POST  http://127.0.0.1:5000/xchart
-@app.route('/xchart', methods = ['POST'])
-def xchart():
-    xchart = URLfunctions.xchart()
-    print("#######foundURL#######")
-    print(xchart)
-    print("######################")
-    return jsonify(xchart)
-    
-
-
-
 
 if __name__ == '__main__' :
     app.run(debug= True)
