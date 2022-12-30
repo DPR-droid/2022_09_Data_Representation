@@ -169,7 +169,7 @@ def update(id):
 
 # Check
 # curl -X GET "http://127.0.0.1:5000/check/18"
-# HTTP GET requests sent to the '/check/int:id' URL. When a request is made to this URL, the 'check' function is executed and the 'id' parameter is passed to it. 
+# GET requests sent to the '/check/int:id' URL. When a request is made to this URL, the 'check' function is executed and the 'id' parameter is passed to it. 
 # The function then calls the 'check_sql' method of the 'URLfunctions' object, passing in the 'id' parameter. 
 # The 'check_sql' method returns a dictionary containing the data for the URL with the specified 'id', 
 # which is then converted to a JSON object using the 'jsonify' function and returned in the response to the client.

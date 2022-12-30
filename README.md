@@ -27,45 +27,54 @@ The purpose of this repository is to demonstrate the learning outcomes of the Da
 
 # 1. GitHub Folder structure
 
-1.1 Project
-    - Contains Big Project Description
+**1.1 Project**
 
-1.2. Project Version 
-    - Contains Zip Files of each iteration: ***.zip in gitignore**
+Contains Big Project Description
 
-1.3. Template
-    Contain HTML files
-    - index_V02.html: **Latest version**
-    - index.html
-    - login.html: logging in page with authorization
-    - style.css: CSS used for describing the presentation of index_V02.html and login.html
+**1.2 Project Version**
 
-1.4. venv
-    - Contains python venv **venv in gitignore**
-        - python -m venv venv
-        - venv\Scripts\activate.bat
-        - deactivate
+Contains Zip Files of each iteration: ***.zip in gitignore**
 
-1.5. Project_Create
-    - createdb.py 
-        A Python script, you can use the MySQL-connector-python library to execute the CREATE DATABASE statement and then creating the required tables on the MySQL server.
+**1.3 Template**
 
-    - createsqlcfg.py
-        A Python script that will request a user's input to create a dbconfig.py file with MySQL connection details.
+Contain HTML files
 
-    - createvtcfg.py
-        A Python script that will request input from the user and create a config.py file with the API key from Virustotal. 
+- index_V02.html: **Latest version**
+- index.html
+- login.html: logging in page with authorization
+- style.css: CSS used for describing the presentation of index_V02.html and login.html
 
-1.6. Main folder files
-    Contains
-    - config.py  **config.py in gitignore**
-    - dbconfig.py  **dbconfig.py in gitignore**
-    - flask_server_V01.py: contain flask app run "python flask_server_V01.py"
-    - flask_server_V02.py: **Latest version** contain flask app run "python flask_server_V02.py"
-    - URLfunctions.py: contains functions
-    - requirements.txt: required for running in venv or pythonanywhere.com run "pip install -r requirments.txt"
-    - gitignore: Tells Git which files to ignore when committing your project to the GitHub repository
-    - DA_Big_Project.7z: Files required to run a local version. See section **4.1 Try at home**
+**1.4 venv**
+
+Contains python venv **venv in gitignore**
+
+- python -m venv venv
+- venv\Scripts\activate.bat
+- deactivate
+
+**1.5. Project_Create**
+
+- createdb.py:  
+A Python script, you can use the MySQL-connector-python library to execute the CREATE DATABASE statement and then creating the required tables on the MySQL server.
+
+- createsqlcfg.py: 
+A Python script that will request a user's input to create a dbconfig.py file with MySQL connection details.
+
+- createvtcfg.py: 
+A Python script that will request input from the user and create a config.py file with the API key from Virustotal. 
+
+**1.6. Main folder files**
+    
+Contains:
+
+- config.py  **config.py in gitignore**
+- dbconfig.py  **dbconfig.py in gitignore**
+- flask_server_V01.py: contain flask app run "python flask_server_V01.py"
+- flask_server_V02.py: **Latest version** contain flask app run "python flask_server_V02.py"
+- URLfunctions.py: contains functions
+- requirements.txt: required for running in venv or pythonanywhere.com run "pip install -r requirments.txt"
+- gitignore: Tells Git which files to ignore when committing your project to the GitHub repository
+- DA_Big_Project.7z: Files required to run a local version. See section **4.1 Try at home**
 
 
 # 2. Assessment
@@ -77,18 +86,18 @@ This project is based on **Topic09-linking to db**
 3. Database table **links table**
 4. Web interface, using AJAX
 5. Logging in page with authorization
-6. Second Database to store users credentials  **user table**
+6. Second Database to store users credentials in a **user table**
 7. Server Links to some third party API 
 8. The third party API requires authentication
-9. Third Database to store results of third party API **url_checked table**
+9. Third Database to store results of third party API in **url_checked table**
 10. Hosted online Pythonanywhere.com
 
 # 3. Overview of Project Functionality
-This display the users experience from login to CRUD to logout
+Users experience from login to logout
 
 ## 3.1 Login Page **login.html**
 
-**Note:** Screenshots foe section **3.1 Login Page** are from **login.html**
+**Note:** Screenshots from section **3.1 Login Page** are from **login.html**
 
 5. Logging in page with authorization
 6. Second Database to store users credentials  **user table**
@@ -123,12 +132,18 @@ CRUD stands for Create, Read, Update, and Delete. These are the four basic funct
 
 ### 3.2.1 Read
 
-The user will be first introduced to **Read**: This retrieves all the records stored in the urls database and displays them.
+The user will be first introduced to **Read**: 
+
+#### Flask operation
+This retrieves all the records stored in the urls database and displays them. The @app.route('/urls') decorator in the code defines a route for the Flask web application. When a client makes a GET request to the '/urls' endpoint, the getAll() function will be executed. The getAll() function calls the getAll() method of the URLfunctions class and stores the returned value in the results variable. The jsonify() function is then used to convert the results variable to a JSON object, which is returned to the client as the response to the request.
 
 ![CRUD_01.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_01.PNG?raw=true)
 
 ### 3.2.2 Create
 The user can select the **Create** button
+
+#### Flask operation
+Flask listens for HTTP POST requests sent to the '/urls' endpoint. When a POST request is received, the function first checks if there is any JSON data included in the request body. If there is no JSON data, it aborts the request and returns an HTTP status code of 400 (Bad Request). If the request includes JSON data, the function creates a dictionary called 'url' with keys 'URL', 'Type', and 'Score', and sets their values to the corresponding values from the request body. Then it creates a tuple called 'values' that contains the values for the keys in the same order as they appear in the database table. Next, the function calls the 'create' method from the 'URLfunctions' class and passes it the 'values' tuple as an argument. This method inserts a new row into the 'links' table in the database with the values provided in the tuple. The 'create' method returns the ID of the newly inserted row, which the function assigns to the 'id' key in the 'url' dictionary. Finally, the function returns the 'url' dictionary as a JSON object to the client.
 
 ![CRUD_04.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_04.PNG?raw=true)
 
@@ -145,7 +160,10 @@ The page is updated to reflect the changes made to the urls database with the ne
 ![CRUD_05.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/CRUD_05.PNG?raw=true)
 
 ### 3.2.3 Update
-The user can select the **Update** button: This retrieves the record stored at **id** in the urls database and display it on a form **update URL Link**.
+The user can select the **Update** button. 
+
+#### Flask operation
+@app.route that listens for a PUT request to the /urls/<int:id> URL path. When the route receives a PUT request, it will execute the update function. The update function uses the findByID function to retrieve the URL data from the links table that matches the given id passed in the URL path. If the URL data is not found, the function will return a 404 error. If the request does not contain a JSON payload, the function will return a 400 error. The function will then check if the JSON payload includes a Score field and whether its value is an integer. If not, it will return a 400 error. If the URL, Type, or Score field is present in the JSON payload, the function will update the corresponding field in the foundURL dictionary with the new value. It will then create a tuple called values with the updated URL data and the id of the URL. Finally, the function will call the update function in the URLfunctions class and pass it the values tuple as an argument. It will then return the updated foundURL dictionary in a JSON response.
 
 Then user selects the **Update** button for the entry example **id : 57, URL : dogslife.com.com, Type : excel, Score 10** 
 
@@ -175,7 +193,10 @@ The page is updated to reflect the changes made to the urls database with the ne
 
 ### 3.2.4 Delete
 
-The user can select the **Delete** button: This retrieves the record stored at **id** in the urls database and deletes the entry.
+The user can select the **Delete** button.
+
+#### Flask operation
+DELETE requests sent to the /urls/<int:id>. Function deletes the SQL record using the URLfunctions.delete with the specified ID, When a DELETE request is made to the /urls/<id> URL, where <id> is the ID of the URL record.
 
 Example: **id : 60, URL : daiscool.com**
 
@@ -199,7 +220,9 @@ The page is updated to reflect the changes made to the urls database with the de
 
 
 ## 3.3 Virustotal API index_V02.html
+
 The project requested the following:
+
 7. Server Links to some third party API 
 8. The third party API requires authentication
 9. Third Database to store results of third party API **url_checked table**
@@ -208,13 +231,13 @@ To add extra functionality to the project the project uses an Virustotal authent
 
 ![VT_LOOKUP_03.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/VT_LOOKUP_03.PNG?raw=true)
 
-When the user onclick of the **Check** button
+onclick of the **Check** button
 
 ![VT_LOOKUP_04.PNG](https://raw.githubusercontent.com/DPR-droid/2022_09_Data_Representation/main/data/VT_LOOKUP_04.PNG?raw=true)
 
-This function performs a VirusTotal scan on a given URL. VirusTotal is a service that analyses files and URLs for the presence of viruses, worms, trojans, and other types of malicious content.
+This function performs a VirusTotal lookup on a given URL. VirusTotal is a service that analyses files and URLs for the presence of viruses, worms, trojans, and other types of malicious content.
 
-The function first retrieves the URL from the "links" table in the database using the given id. It then uses the VirusTotal API to request a report on the URL and receives the report in JSON format.
+The function first retrieves a GET requests sent to the '/check/int:id', the URL from the "links" table in the database using the given id. It then uses the VirusTotal API to request a report on the URL and receives the report in JSON format.
 
 The function then processes the report to determine the number of "unrated" sites, which are sites that have not yet been analysed by VirusTotal, and the number of "suspicious" sites, which are sites that have been flagged as potentially malicious. 
 
@@ -233,10 +256,16 @@ https://user-images.githubusercontent.com/77699514/210022600-ccbd791b-f8b1-4b68-
 
 ## 3.5 Biggest challenge
 
-1. Debugging issues with the data being sent in the ajax request or received in the Flask app. It can be helpful to use tools such as the browser's developer console or a tool like Postman to inspect the request and response data or curl commands. 
-2. That all the necessary dependencies are installed
-3. Ensuring that the code is correctly implemented
-4. Testing and deploying the application on Pythonanywhere **Pythonanywhere Errors below**
+1. Identifying the source of the problem or issue, 
+2. Analysing the application's code and any error messages that are generated
+3. Testing different parts of the application to determine where the issue is occurring
+4. Finding a solution to the issue, which may involve modifying the code or implementing a workaround
+5. That all the necessary dependencies are installed
+6. Ensuring that the code is correctly implemented for logging in, creating and updating records, and logging out
+7. Testing and deploying the application on Pythonanywhere **Pythonanywhere Errors below**
+8. Ensure that the application is well-structured, easy to navigate
+
+Debugging issues with the data being sent in the ajax request or received in the Flask app. It can be helpful to use tools such as the browser's developer console or a tool like Postman to inspect the request and response data or curl commands. 
 
 # 4. How Run the Assessment
 
